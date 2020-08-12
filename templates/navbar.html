@@ -1,0 +1,31 @@
+<header class="header">
+
+    <nav class="navbar navbar-custom">
+
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'first_app:home' %}">Giant Club</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="custom-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'first_app:home' %}">home</a></li>
+                    <li><a href="{% url 'first_app:portfolio' %}">Portfolio</a></li>
+                    <li><a href="{% url 'first_app:services' %}">Service</a></li>
+                    <li><a href="{% url 'first_app:contact' %}">Contact</a></li>
+                    <a href="{% url 'first_app:pdf' %}" type="button" style="margin-top: 6px; margin-left: 3px;" class="btn btn-primary">Download Resume</a>
+                </ul>
+            </div>
+
+        </div><!-- .container -->
+
+    </nav>
+
+</header>

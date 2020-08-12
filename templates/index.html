@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	{% include 'header.html' %}
+<body>
+
+	<!-- Preloader -->
+
+	<div id="loading">
+		<div id="loading-center">
+			<div id="loading-center-absolute">
+				<div class="object" id="object_one"></div>
+				<div class="object" id="object_two"></div>
+				<div class="object" id="object_three"></div>
+				<div class="object" id="object_four"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Home start -->
+
+	<section id="home" class="module-image js-height-full">
+
+		<div class="intro">
+			<div class="hello">Hello, my name is Muhammad Hamza and</div>
+			<h1>I am Python Developer and Data Extractor</h1>
+			<div class="who-creates">create and scrape website for your bussiness</div>
+		</div>
+
+		<div class="mouse-icon">
+			<div class="wheel"></div>
+		</div>
+
+	</section>
+
+	<!-- Home end -->
+
+	<!-- Navigation start -->
+
+	{% include 'navbar.html' %}
+
+	<!-- Navigation end -->
+
+	{% include 'portfolio.html' %}
+	<!-- Services start -->
+
+	{% include 'services.html' %}
+
+	{% include 'contact_btn.html' %}
+	<!-- Footer start -->
+	{% include 'footer.html' %}
+
+	<!-- Footer end -->
+
+	<!-- Scroll-up -->
+
+	<div class="scroll-up">
+		<a href="#home"><i class="fa fa-angle-double-up"></i></a>
+	</div>
+
+	{% include 'javascript.html' %}
+
+</body>
+</html>

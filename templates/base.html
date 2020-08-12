@@ -1,0 +1,98 @@
+{% load static %}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>--</title>
+
+	<!-- CSS -->
+	<!-- Bootstrap core CSS -->
+	<link href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+
+	<!-- Font Awesome CSS -->
+	<link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet" media="screen">
+
+	<!-- Elegant icons CSS -->
+	<link href="{% static 'assets/css/simple-line-icons.css' %}" rel="stylesheet" media="screen">
+
+	<!--[if lte IE 7]>
+		<script src="assets/js/icons-lte-ie7.js"></script>
+	<![endif]-->
+
+	<!-- Magnific-popup lightbox -->
+	<link href="{% static 'assets/css/magnific-popup.css' %}" rel="stylesheet">
+
+	<!-- Owl Carousel -->
+	<link href="{% static 'assets/css/owl.theme.css' %}" rel="stylesheet">
+	<link href="{% static 'assets/css/owl.carousel.css' %}" rel="stylesheet">
+
+	<!-- Animate css -->
+	<link href="{% static 'assets/css/animate.css' %}" rel="stylesheet">
+
+	<!-- Custom styles CSS -->
+	<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" media="screen">
+	
+</head>
+<body>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="E34fjDxT"></script>
+
+    {% include 'navbar.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="{% static 'assets/js/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.parallax-1.1.3.js' %}"></script>
+	<script src="{% static 'assets/js/imagesloaded.pkgd.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.shuffle.min.js' %}"></script>
+	<script src="{% static 'assets/js/twitterFetcher.js' %}"></script>
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.fitvids.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+	<script src="{% static 'assets/js/smoothscroll.js' %}"></script>
+	<script src="{% static 'assets/js/wow.min.js' %}"></script>
+	<!-- Google Map js -->
+	<script>
+		// When the window has finished loading create our google map below
+		google.maps.event.addDomListener(window, 'load', init);
+
+		function init() {
+			// Basic options for a simple Google Map
+			// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+			var mapOptions = {
+				// How zoomed in you want the map to start at (always required)
+				zoom: 11,
+
+				scrollwheel: false,
+
+				// The latitude and longitude to center the map (always required)
+				center: new google.maps.LatLng(40.6700, -73.9400), // New York
+
+				// How you would like to style the map. 
+				// This is where you would paste any style found on Snazzy Maps.
+				styles: [{ "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#e9e9e9" }, { "lightness": 17 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 20 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }]
+			};
+
+			// Get the HTML DOM element that will contain your map 
+			// We are using a div with id="map" seen below in the <body>
+			var mapElement = document.getElementById('map');
+
+			// Create the Google Map using our element and options defined above
+			var map = new google.maps.Map(mapElement, mapOptions);
+
+			// Let's also add a marker while we're at it
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(40.6700, -73.9400),
+				map: map,
+				title: 'Snazzy!'
+			});
+		}
+	</script>
+	<!-- Custom scripts -->
+	<script src="{% static 'assets/js/custom.js' %}"></script>
+	<script src="{% static 'assets/js/custom-shuffle-init.js' %}"></script>
+</body>

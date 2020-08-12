@@ -1,0 +1,65 @@
+<!-- Portfolio start -->
+{% load static %}
+<section id="portfolio" class="module">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-6 col-sm-offset-3">
+
+                <div class="module-header wow fadeInUp">
+                    <h2 class="module-title">My works</h2>
+                    <div class="module-line"></div>
+                    <div class="module-subtitle">
+                        He lay on his armour-like back, and if he lifted his head a little he could see his brown
+                        belly, slightly domed and divided by arches into stiff sections.
+                    </div>
+                    <div class="module-line"></div>
+                </div>
+
+            </div>
+
+        </div><!-- .row -->
+
+        <!-- Portfolio Filter start-->
+
+        <div class="row">
+
+            <div class="col-sm-12">
+
+                <ul id="filter">
+                    <li class="active" data-group="all">All</li>
+                    {% for cat_form in cat_forms %}
+                    <li data-group="{{cat_form.title}}">{{cat_form.title}}</li>
+                    {% endfor %}
+                    
+                </ul>
+
+            </div>
+
+        </div><!-- .row -->
+
+        
+
+    </div><!-- .contaier -->
+
+    <ul class="portfolio-items-container">
+        {% for form in forms %}
+        <li class="portfolio-item" data-groups="all {{form.category}}">
+            <figure>
+                <a href="{% url 'first_app:project_detail' slug=form.slug %}"></a>
+                <img src="{{form.image.url}}" alt="">
+                <figcaption>
+                    <div class="caption-inner">
+                        <h3 class="portfolio-item-title">{{form.name}}</h3>
+                        <div class="portfolio-item-desc">{{form.category}}</div>
+                    </div>
+                </figcaption>
+            </figure>
+        </li>
+        {% endfor %}
+
+    </ul>
+
+</section>
+
+<!-- Portfolio end -->

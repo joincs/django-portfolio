@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}{% load crispy_forms_tags %}{% load urlify %}
+<style>
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px;
+        display: flex;
+    }
+
+    .left-column {
+        width: 65%;
+        position: relative;
+    }
+
+    .right-column {
+        width: 35%;
+        margin-top: 60px;
+    }
+
+    .left-column img {
+        width: 95%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transition: all 0.3s ease;
+        margin-top: 44px;
+        height: 354px;
+    }
+
+    .left-column img.active {
+        opacity: 1;
+    }
+
+    .product-description {
+        border-bottom: 1px solid #E1E8EE;
+        margin-bottom: 20px;
+    }
+
+    .product-description span {
+        font-size: 12px;
+        color: #358ED7;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .product-description h1 {
+        font-weight: 300;
+        font-size: 52px;
+        color: #43484D;
+        letter-spacing: -2px;
+    }
+
+    .product-description p {
+        font-size: 16px;
+        font-weight: 300;
+        color: #86939E;
+        line-height: 24px;
+    }
+
+    @media (max-width: 940px) {
+        .container {
+            flex-direction: column;
+            margin-top: 60px;
+        }
+
+        .left-column,
+        .right-column {
+            width: 100%;
+        }
+
+        .left-column img {
+            width: 300px;
+            right: 0;
+            top: -65px;
+            left: initial;
+        }
+    }
+
+    @media (max-width: 535px) {
+        .left-column img {
+            width: 220px;
+            top: -85px;
+        }
+    }
+</style>
+<body>
+<main class="container">
+
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column">
+        <!-- <img data-image="black" src="{{form.image.url}}" alt="">
+        <img data-image="blue" src="{{form.image.url}}" alt=""> -->
+        <img data-image="red" class="active" src="{{form.image.url}}" alt=""> 
+    </div>
+
+    <div class="right-column">
+
+        <div class="product-description">
+            <span>{{form.category}}</span>
+            <h1>{{form.name}}</h1>
+            <div class="fb-like" data-href="{{request.build_absolute_uri}}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+            <!-- 
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}} ">
+                Facebook |
+            </a>
+            <a href="https://twitter.com/home?status={{form.description|truncatechars:20|urlify}}%20{{request.build_absolute_uri}} ">
+                Twitter |
+            </a>
+            <a href='https://plus.google.com/share?url={{request.build_absolute_uri}}'>Google+ |</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}&title={{form.name}}&summary={{form.description|truncatechars:20|urlify}}&source={{request.build_absolute_uri}}">
+                Linkedin |
+            </a>
+            <a href="http://www.reddit.com/submit?url={{request.build_absolute_uri}}&title={{form.name}}">Reddit</a> -->
+
+            <p>{{form.description|linebreaks}}</p>
+        </div>
+        {% if form.file_upload %}
+            
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+                Download Sample
+            </button>
+           
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Download Sample</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" class="post-form form-horizontal" enctype="multipart/form-data" class="uniForm">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{ email_form.email.errors }}
+                                    <label class="control-label col-sm-2" for="{{ form.email.id_for_label }}"></label>
+                                    <div class="col-sm-7">{{ email_form.email|as_crispy_field}}</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Download</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>        
+</main>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% if form.file_upload %}
+            <h3 style="margin-top:-8px; margin-left: 5px;">Please Give Some Feedback</h4>
+            <div class="fb-comments" data-href="{{request.build_absolute_uri}}" data-numposts="5" data-width=""></div>
+            {% else %}
+            <h3 style="margin-top:158px; margin-left: 5px;">Please Give Some Feedback</h4>
+                <div class="fb-comments" data-href="{{request.build_absolute_uri}}" data-numposts="5" data-width=""></div>
+            {% endif %}
+        </div>
+    </div>
+    
+</div>
+<br>
+<br>
+{% include 'footer.html' %}
+
+<script>
+    $(document).ready(function () {
+
+        $('.color-choose input').on('click', function () {
+            var headphonesColor = $(this).attr('data-image');
+
+            $('.active').removeClass('active');
+            $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
+            $(this).addClass('active');
+        });
+
+    });
+</script>
+{% endblock %}
